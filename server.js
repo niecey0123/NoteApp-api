@@ -15,7 +15,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // MongoDB connection
-mongoose.connect('mongodb://127.0.0.1:27017/Notetaking',
+mongoose.connect('https://noteapp-api-wn19.onrender.com',
 	{ useNewUrlParser: true, useUnifiedTopology: true });
 
 	
