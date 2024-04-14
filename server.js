@@ -20,7 +20,7 @@ const corsOptions = {
     optionsSuccessStatus: 200,
   };
  
-  app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // MongoDB connection
@@ -48,7 +48,7 @@ app.get("/", (req, res) => {
     res.send("Hello, this is the root!");
 });
  
-app.get("/notes", async (req, res) => {
+app.get("/api/notes", async (req, res) => {
     try {
         const notes = await Note.find();
         res.json(notes);
@@ -58,7 +58,7 @@ app.get("/notes", async (req, res) => {
 });
  
 // Update Note by ID
-app.put("/notes/:id", async (req, res) => {
+app.put("api/notes/:id", async (req, res) => {
     const { title, content } = req.body;
     const noteId = req.params.id;
  
@@ -75,7 +75,7 @@ app.put("/notes/:id", async (req, res) => {
 });
  
 // Delete Note by ID
-app.delete("/notes/:id", async (req, res) => {
+app.delete("/api/notes/:id", async (req, res) => {
     const noteId = req.params.id;
  
     try {
@@ -87,7 +87,7 @@ app.delete("/notes/:id", async (req, res) => {
 });
  
 // Create Note
-app.post("/notes", async (req, res) => {
+app.post("/api/notes", async (req, res) => {
     const { title, content } = req.body;
  
     const note = new Note({ title, content });
