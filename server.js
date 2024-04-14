@@ -30,7 +30,7 @@ const PORT = process.env.PORT || 5000;
     next();
   });
 
-app.use(cors(corsOptions));
+//app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // MongoDB connection
