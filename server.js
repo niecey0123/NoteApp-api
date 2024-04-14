@@ -15,7 +15,12 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+    origin: 'https://my-note-app-38wr.onrender.com/',//(https://your-client-app.com)
+    optionsSuccessStatus: 200,
+  };
+ 
+  app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // MongoDB connection
