@@ -3,7 +3,7 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 
 // const path = require('path');
 const express = require('express');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 // const cors = require('cors');
 const bodyParser = require('body-parser');
 
