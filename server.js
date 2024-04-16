@@ -20,11 +20,11 @@ const uri = "mongodb+srv://scrumpler11:twinsarecool@cluster0.ytysgnv.mongodb.net
 //      credentials:true,     
 //     optionsSuccessStatus: 200,
 //  };
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-//   });
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 // UnComment for testing
 //   app.use(function(req, res, next) {
@@ -59,11 +59,7 @@ connection.once('open', () => {
 // Routes
 app.get("/", (req, res) => {
     res.send("Connected to backend");
-    res.setHeader("Access-Control-Allow-Origin", "*")
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    res.setHeader("Access-Control-Max-Age", "1800");
-    res.setHeader("Access-Control-Allow-Headers", "content-type");
-    res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" ); 
+    
 });
  
 app.get("/api/notes", async (req, res) => {
