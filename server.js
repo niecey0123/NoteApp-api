@@ -3,7 +3,7 @@
 // const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
-// const cors = require('cors');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 
 // require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
@@ -20,11 +20,11 @@ const uri = "mongodb+srv://scrumpler11:twinsarecool@cluster0.ytysgnv.mongodb.net
 //      credentials:true,     
 //     optionsSuccessStatus: 200,
 //  };
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
+// app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+//   });
 
 // UnComment for testing
 //   app.use(function(req, res, next) {
@@ -35,7 +35,9 @@ app.use(function(req, res, next) {
 
 // app.use(cors(corsOptions));
 app.use(bodyParser.json());
-
+app.use(cors({
+    origin: 'https://my-note-app-38wr.onrender.com'
+  }));
 // MongoDB connection
 mongoose.connect(uri, 
 	{ useNewUrlParser: true, useUnifiedTopology: true }
