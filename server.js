@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 // Establishing Port
 const app = express();
 const PORT = process.env.PORT || 5000;
-const uri = "mongodb+srv://scrumpler11:twinsarecool@cluster0.ytysgnv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const uri = "mongodb+srv://scrumpler11:twinsarecool@cluster0.ytysgnv.mongodb.net/Notetaking?retryWrites=true&w=majority&appName=Cluster0";
 
 // Middleware
 app.use(bodyParser.json());
