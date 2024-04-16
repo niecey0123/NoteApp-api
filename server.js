@@ -55,6 +55,7 @@ async function run() {
     // Ensures that the client will close when you finish/error
     await client.close();
   }
+}
 // Routes
 app.get("/", (req, res) => {
     res.send("Hello, this is the root!");
