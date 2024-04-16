@@ -55,7 +55,7 @@ connection.once('open', () => {
 
 // Routes
 app.get("/", (req, res) => {
-    res.send("Hello, this is the root!");
+    res.send("Connected to backend");
 });
  
 app.get("/api/notes", async (req, res) => {
