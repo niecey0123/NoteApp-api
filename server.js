@@ -13,7 +13,7 @@ console.log('here...', path.resolve(__dirname, '../.env'), process.env.MONGO_URI
 // Establishing Port
 const app = express();
 const PORT = process.env.PORT || 5000;
-
+const uri = 'mongodb+srv://scrumpler11:Niecey213@cluster0.ytysgnv.mongodb.net/';
 // Middleware
 //  const corsOptions = {
 //      origin: 'https://my-note-app-38wr.onrender.com/',//(https://your-client-app.com)
@@ -34,7 +34,7 @@ const PORT = process.env.PORT || 5000;
 app.use(bodyParser.json());
 
 // MongoDB connection
-mongoose.connect(process.env.MONGO_URI, 
+mongoose.connect(uri, 
 	{ useNewUrlParser: true, useUnifiedTopology: true }
     
     );
