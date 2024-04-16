@@ -13,7 +13,6 @@ const bodyParser = require('body-parser');
 // Establishing Port
 const app = express();
 const PORT = process.env.PORT || 5000;
-const uri = 'mongodb+srv://scrumpler11:Niecey213@cluster0.ytysgnv.mongodb.net/';
 // Middleware
 //  const corsOptions = {
 //      origin: 'https://my-note-app-38wr.onrender.com/',//(https://your-client-app.com)
@@ -34,25 +33,28 @@ const uri = 'mongodb+srv://scrumpler11:Niecey213@cluster0.ytysgnv.mongodb.net/';
 app.use(bodyParser.json());
 
 // MongoDB connection
-mongoose.connect(uri, 
-	{ useNewUrlParser: true, useUnifiedTopology: true }
-    
-    );
 
-	
-// Define Note model
-const Note = mongoose.model("Note", {
-    title: String,
-    content: String,
-
+// const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = 'mongodb+srv://scrumpler11:Niecey213@cluster0.ytysgnv.mongodb.net/';
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
 });
-
-// Listen for successful MongoDB connection
-const connection = mongoose.connection;
-connection.once('open', () => {
-	console.log('MongoDB database connection established successfully');
-});
-
+async function run() {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
 // Routes
 app.get("/", (req, res) => {
     res.send("Hello, this is the root!");
