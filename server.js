@@ -17,6 +17,7 @@ const uri = "mongodb+srv://scrumpler11:twinsarecool@cluster0.ytysgnv.mongodb.net
 // Middleware
 //  const corsOptions = {
 //      origin: 'https://my-note-app-38wr.onrender.com/',//(https://your-client-app.com)
+//      credentials:true,     
 //     optionsSuccessStatus: 200,
 //  };
 // app.use(function(req, res, next) {
@@ -24,13 +25,15 @@ const uri = "mongodb+srv://scrumpler11:twinsarecool@cluster0.ytysgnv.mongodb.net
 //     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 //     next();
 //   });
-  app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "https://my-note-app-38wr.onrender.com"); // update to match the domain you will make the request from
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
 
-//app.use(cors(corsOptions));
+// UnComment for testing
+//   app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "https://my-note-app-38wr.onrender.com", "https://my-note-app-38wr.onrender.com/api/id"); // update to match the domain you will make the request from
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+//   });
+
+// app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // MongoDB connection
@@ -56,6 +59,11 @@ connection.once('open', () => {
 // Routes
 app.get("/", (req, res) => {
     res.send("Connected to backend");
+    res.setHeader("Access-Control-Allow-Origin", "*")
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader("Access-Control-Max-Age", "1800");
+    res.setHeader("Access-Control-Allow-Headers", "content-type");
+    res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" ); 
 });
  
 app.get("/api/notes", async (req, res) => {
