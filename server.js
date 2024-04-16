@@ -30,7 +30,7 @@ mongoose.connect(uri,
 const Note = mongoose.model("Note", {
     title: String,
     content: String,
-    updatedAt: new Date()
+    
 
 });
 
