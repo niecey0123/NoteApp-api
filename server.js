@@ -13,7 +13,7 @@ const bodyParser = require('body-parser');
 // Establishing Port
 const app = express();
 const PORT = process.env.PORT || 5000;
-const uri = "mongodb+srv://scrumpler11:<niecey0213>@cluster0.ytysgnv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const uri = "mongodb+srv://scrumpler11:twinsarecool@cluster0.ytysgnv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 // Middleware
 //  const corsOptions = {
 //      origin: 'https://my-note-app-38wr.onrender.com/',//(https://your-client-app.com)
